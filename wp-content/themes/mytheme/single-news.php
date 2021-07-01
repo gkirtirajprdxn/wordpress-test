@@ -19,7 +19,6 @@ get_header();
       $args = array(
           'post_type' => 'news',
           'post_status' => 'publish',
-          'offset' => 1,
           'orderby' => 'rand',
           'post__not_in' => array(get_the_ID()),
           'posts_per_page' => 3
