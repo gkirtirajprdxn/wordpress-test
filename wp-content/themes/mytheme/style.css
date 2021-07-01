@@ -54,6 +54,10 @@ header #menu-header-menu li {
     list-style-type: none;
 }
 
+.no-posts-msg {
+  display: none;
+}
+
 /* footer */
 .footer-container {
     padding: 20px 0;

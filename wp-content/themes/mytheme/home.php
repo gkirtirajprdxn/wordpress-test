@@ -12,8 +12,8 @@
 
 get_header();
 
-// echo "Home Page";
+echo "Home Page";
 
-get_template_part('template-parts/content', 'archive');
+// get_template_part('template-parts/content', 'archive');
 
 get_footer(); ?>
