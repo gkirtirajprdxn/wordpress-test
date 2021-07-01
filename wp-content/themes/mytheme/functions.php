@@ -160,8 +160,7 @@ function filter_posts_by_ajax_callback() {
   if ($the_query -> have_posts()) {
     while($the_query -> have_posts()) {
       $the_query -> the_post(); 
-      // get_template_part('template-parts/content', 'select');
-      the_title('<h2>', '</h2>');
+      get_template_part('template-parts/content', 'archive');
     }
   } 
   wp_reset_postdata();

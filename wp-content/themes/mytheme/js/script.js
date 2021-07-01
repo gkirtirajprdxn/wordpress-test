@@ -7,7 +7,7 @@
       $.ajax({
         url: blog.ajaxurl,
         data: { action: 'filter_posts_by_ajax', category: category },
-        type: 'news',
+        type: 'POST',
         success: function(result) {
           $('.blog-posts').html(result)
         },
