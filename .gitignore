@@ -23,3 +23,6 @@ wp-content/plugins/index.php
 
 # track these files, if they exist
 !.gitignore
+
+# track these themes
+!wp-content/themes/mytheme/
