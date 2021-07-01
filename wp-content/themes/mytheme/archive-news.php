@@ -44,7 +44,7 @@ get_template_part('template-parts/content', 'select'); ?>
     // ppp : posts_per_page
     var ppp = <?php echo json_encode($args['posts_per_page']); ?>;
     var totalPages = <?php echo json_encode($query->max_num_pages) ?>;
-    console.log(totalPages);
+    // console.log(totalPages);
 </script>
 
 <?php get_footer(); ?>

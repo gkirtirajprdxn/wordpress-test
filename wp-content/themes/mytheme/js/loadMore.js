@@ -27,23 +27,5 @@ jQuery(function($) {
       // console.log(page);
       // console.log(totalPages+1);
     });
-    // $.ajax({
-    //   url: blog.ajaxurl,
-    //   data: {
-    //     'type': 'news',
-    //     'action': 'load_posts_by_ajax',
-    //     'page': page,
-    //     'security': blog.security,
-    //     'posts_per_page': ppp,  // from archive-news.php
-    //   },
-    //   type: 'news',
-    //   success: function(result) {
-    //     $('.blog-posts').html(result);
-    //     console.log(result);
-    //   },
-    //   error: function(error) {
-    //     console.warn(error);
-    //   }
-    // });
   });
 });

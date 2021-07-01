@@ -21,6 +21,7 @@ function test_scripts() {
     'security' => wp_create_nonce( 'load_more_posts' ),
   );
   wp_localize_script( 'custom-script', 'blog', $script_data_array );
+  wp_localize_script( 'custom-customjs', 'blog', $script_data_array );
 
   // Enqueued script with localized data.
   // wp_enqueue_script( 'custom-script' );
@@ -142,22 +143,7 @@ function custom_excerpt_length($length) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
-// function trim_custom_excerpt($length) {
-//   if (has_excerpt()) {
-//       $length = wp_trim_words(get_the_excerpt(), apply_filters("excerpt_length", 10));
-//   }
-//   return $length;
-// }
-// add_filter("the_excerpt", "trim_custom_excerpt", 999);
-
-// hide wysiwyg editor for custom post type
-// function init_remove_support(){
-//   $post_type = 'news';
-//   remove_post_type_support( $post_type, 'editor');
-// }
-// add_action('init', 'init_remove_support',100);
-
-//filter post Fn
+//filter post by category Fn
 function filter_posts_by_ajax_callback() {
   $category = $_POST['category'];
   echo $category;
