@@ -58,6 +58,23 @@ header #menu-header-menu li {
   display: none;
 }
 
+select {
+  display: block;
+  margin: 20px auto;
+}
+
+.loadmore {
+  text-align: center;
+  display: block;
+  margin: 20px auto;
+}
+
+.blog-posts .container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
+
 /* footer */
 .footer-container {
     padding: 20px 0;
