@@ -9,7 +9,7 @@
  * @package My_Theme
  */
 ?>
-
+</main>
 <footer>
     <div class="footer-container">
         <p class="copyright">Copyright&copy; 2021. All Rights Reserved!</p>

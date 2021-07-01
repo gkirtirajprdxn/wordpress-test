@@ -7,16 +7,16 @@
  * @package My_Theme
  */
 
-function pioneer_scripts() {
-  wp_enqueue_style( 'pioneer-style', get_template_directory_uri() . '/style.css', array(), '1.0.0', 'all' );
+function test_scripts() {
+  wp_enqueue_style( 'test-style', get_template_directory_uri() . '/style.css', array(), '1.0.0', 'all' );
 
   wp_enqueue_script( 'jquery-3.5.1', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), '1.0.0', true );
   wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/script.js', array('jquery-3.5.1'), '1.0.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'pioneer_scripts' );
+add_action( 'wp_enqueue_scripts', 'test_scripts' );
 
-function pioneer_setup() {
-  load_theme_textdomain( 'pioneer' );
+function test_setup() {
+  load_theme_textdomain( 'test' );
   /* Add menu support */
   add_theme_support('menus');
   /* Add excerpt for pages */
@@ -38,10 +38,10 @@ function pioneer_setup() {
   ) );
   // register menus
   register_nav_menus( array(
-    'primary' => esc_html__( 'Primary Navigation', 'pioneer' ),
+    'primary' => esc_html__( 'Primary Navigation', 'test' ),
   ) );
 }
-add_action( 'after_setup_theme', 'pioneer_setup' );
+add_action( 'after_setup_theme', 'test_setup' );
 
 /* Disable content editor for CPT */
 function remove_default_content_editor() {
@@ -59,7 +59,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 add_filter('use_block_editor_for_post', '__return_false');
 
 //Register nav menus
-function pioneer_menus() {
+function test_menus() {
   $locations = array(
     'primary' => "Primary Menus",
     'footer' => "Footer Menu Items"
@@ -67,4 +67,4 @@ function pioneer_menus() {
 
   register_nav_menus($locations);
 }
-add_action('init', 'pioneer_menus');
+add_action('init', 'test_menus');
