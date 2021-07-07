@@ -7,7 +7,7 @@ jQuery(function($) {
       'action': 'load_posts_by_ajax',
       'page': page,
       'security': blog.security,
-      'posts_per_page': ppp,  // from archive-news.php
+      'posts_per_page': ppp,  // from news.php
     };
     // console.log(ppp);
 

@@ -146,15 +146,17 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 //filter post by category Fn
 function filter_posts_by_ajax_callback() {
   $category = $_POST['category'];
-  echo $category;
+  // echo $category;
+
   $args = array(
     'post_type' => 'news',
-    'posts_per_page' => 6
+    'posts_per_page' => 6,
+    'orderby' => 'date'
   );
 
-  if(isset($category)) {
+  if((isset($category)) && $category != 'all') {
     $args['category__in'] = array($category);
-  }
+  } 
 
   $the_query = new WP_Query( $args );
   if ($the_query -> have_posts()) {

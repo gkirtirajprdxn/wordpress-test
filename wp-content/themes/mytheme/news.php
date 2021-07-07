@@ -2,6 +2,7 @@
 /**
  *
  * Template Name:News
+ * 
  *
  * @package WordPress
  * @subpackage macd
