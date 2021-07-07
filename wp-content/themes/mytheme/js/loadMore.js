@@ -11,21 +11,40 @@ jQuery(function($) {
     };
     // console.log(ppp);
 
-    $.post(blog.ajaxurl, data, function(response) {
-      if($.trim(response) != '') {
-        $('.blog-posts').append(response);
-        page++;
-      } else {
-        $('.loadmore').hide();
-        $('.no-posts-msg').show();
-      }
+    // $.post(blog.ajaxurl, data, function(response) {
+    //   if($.trim(response) != '') {
+    //     $('.blog-posts').append(response);
+    //     page++;
+    //   } else {
+    //     $('.loadmore').hide();
+    //     $('.no-posts-msg').show();
+    //   }
 
-      if(page == totalPages + 1) {
+    //   if(page == totalPages + 1) {
+    //     $('.loadmore').hide();
+    //     $('.no-posts-msg').show();
+    //   }
+    //   // console.log(page);
+    //   // console.log(totalPages+1);
+    // });
+    // OR
+    $.ajax({
+      url: blog.ajaxurl,
+      data: data,
+      type: 'POST',
+      success: function(result) {
+        $('.blog-posts').append(result);
+        page++;
+        if(page == totalPages + 1) {
+          $('.loadmore').hide();
+          $('.no-posts-msg').show();
+        }
+      },
+      error: function(error) {
+        console.warn(error);
         $('.loadmore').hide();
         $('.no-posts-msg').show();
       }
-      // console.log(page);
-      // console.log(totalPages+1);
     });
   });
 });
