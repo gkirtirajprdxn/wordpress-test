@@ -10,24 +10,7 @@ jQuery(function($) {
       'posts_per_page': ppp,  // from news.php
     };
     // console.log(ppp);
-
-    // $.post(blog.ajaxurl, data, function(response) {
-    //   if($.trim(response) != '') {
-    //     $('.blog-posts').append(response);
-    //     page++;
-    //   } else {
-    //     $('.loadmore').hide();
-    //     $('.no-posts-msg').show();
-    //   }
-
-    //   if(page == totalPages + 1) {
-    //     $('.loadmore').hide();
-    //     $('.no-posts-msg').show();
-    //   }
-    //   // console.log(page);
-    //   // console.log(totalPages+1);
-    // });
-    // OR
+    
     $.ajax({
       url: blog.ajaxurl,
       data: data,
@@ -46,5 +29,22 @@ jQuery(function($) {
         $('.no-posts-msg').show();
       }
     });
+    // OR
+    // $.post(blog.ajaxurl, data, function(response) {
+    //   if($.trim(response) != '') {
+    //     $('.blog-posts').append(response);
+    //     page++;
+    //   } else {
+    //     $('.loadmore').hide();
+    //     $('.no-posts-msg').show();
+    //   }
+
+    //   if(page == totalPages + 1) {
+    //     $('.loadmore').hide();
+    //     $('.no-posts-msg').show();
+    //   }
+    //   // console.log(page);
+    //   // console.log(totalPages+1);
+    // });
   });
 });
