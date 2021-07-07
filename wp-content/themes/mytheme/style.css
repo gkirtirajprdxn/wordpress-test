@@ -54,6 +54,11 @@ header #menu-header-menu li {
     list-style-type: none;
 }
 
+.search-field {
+  display: flex;
+  align-items: center;
+}
+
 .no-posts-msg {
   display: none;
   text-align: center;

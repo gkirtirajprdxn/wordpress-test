@@ -37,6 +37,14 @@
             wp_nav_menu($args); ?>
           </nav>
         </div>
+
+        <div class="search-field">
+          <form action="search" method="get">
+            <input type="text" name="search_text">
+            <button type="submit" name="">Submit</button>
+          </form>
+        </div>
+
       </div>
     </header>
     <main class="site-main" id="content">
