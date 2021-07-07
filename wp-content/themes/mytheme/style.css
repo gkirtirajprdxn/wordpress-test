@@ -1,0 +1,86 @@
+/*!
+Theme Name: My Theme
+Theme URI: 
+Author: Kirtiraj Gawale
+Author URI: 
+Description: Description
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: my-theme
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+html {
+    line-height: 1.15;
+}
+body {
+    padding: 0;
+    margin: 0;
+    color: var(--secondary);
+    overflow-x: hidden
+}
+
+/* header */
+header .wrapper {
+    display: flex;
+}
+
+header h1 { margin: 16px 0; }
+
+header h1 span { 
+    padding: 0 10px;
+    vertical-align: super;
+}
+
+header nav ul {
+    padding: 20px;
+    display: flex;
+}
+
+header #menu-header-menu li {
+    padding: 0 10px;
+    list-style-type: none;
+}
+
+.no-posts-msg {
+  display: none;
+  text-align: center;
+  margin: 20px auto;
+}
+
+select {
+  display: block;
+  margin: 20px auto;
+}
+
+.loadmore {
+  text-align: center;
+  display: block;
+  margin: 20px auto;
+}
+
+.blog-posts .container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* footer */
+.footer-container {
+    padding: 20px 0;
+    background: #808080;
+    color: #fff;
+    text-align: center;
+}
