@@ -185,9 +185,7 @@ function load_posts_by_ajax_callback() {
       'paged' => $paged,
   );
   $query = new WP_Query( $args );
-  ?>
-
-  <?php if ( $query->have_posts() ) : ?>
+  if ( $query->have_posts() ) : ?>
       <?php while ( $query->have_posts() ) : $query->the_post(); ?>
           <?php get_template_part('template-parts/content', 'archive'); ?>
       <?php endwhile; ?>
