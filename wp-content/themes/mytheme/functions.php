@@ -21,7 +21,7 @@ function test_scripts() {
     'security' => wp_create_nonce( 'load_more_posts' ),
   );
   wp_localize_script( 'custom-script', 'blog', $script_data_array );
-  wp_localize_script( 'custom-customjs', 'blog', $script_data_array );
+  wp_localize_script( 'customjs', 'blog', $script_data_array );
 
   // Enqueued script with localized data.
   // wp_enqueue_script( 'custom-script' );
