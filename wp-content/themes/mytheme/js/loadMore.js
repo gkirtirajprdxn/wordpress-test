@@ -9,7 +9,6 @@ jQuery(function($) {
       'security': blog.security,
       'posts_per_page': ppp,  // from news.php
     };
-    // console.log(ppp);
     
     $.ajax({
       url: blog.ajaxurl,

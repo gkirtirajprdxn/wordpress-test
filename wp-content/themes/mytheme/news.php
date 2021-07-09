@@ -33,10 +33,12 @@ get_template_part('template-parts/content', 'select'); ?>
   </div>
 
   <input type="hidden" id="totalpages" value="<?= $query->max_num_pages ?>">
+  <?php if($query->max_num_pages > 1) { ?>
   <button id="more_posts" class="loadmore">Load More</button>
   <div class="no-posts-msg">
       <h4>No Posts to Load!</h4>
   </div>
+  <?php } ?>
 </article>
 
 
