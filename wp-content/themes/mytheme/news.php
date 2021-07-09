@@ -14,7 +14,7 @@ get_header();
 
 get_template_part('template-parts/content', 'select'); ?>
 
-<article>
+<article id="article">
   <div class="blog-posts">
   <?php
     $args = array(
@@ -30,9 +30,8 @@ get_template_part('template-parts/content', 'select'); ?>
       }
     } 
     wp_reset_query(); ?>
+    <input type="hidden" id="totalpages" value="<?= $query->max_num_pages; ?>">
   </div>
-
-  <input type="hidden" id="totalpages" value="<?= $query->max_num_pages ?>">
   <?php if($query->max_num_pages > 1) { ?>
   <button id="more_posts" class="loadmore">Load More</button>
   <div class="no-posts-msg">
@@ -40,13 +39,5 @@ get_template_part('template-parts/content', 'select'); ?>
   </div>
   <?php } ?>
 </article>
-
-
-<script>
-    // ppp : posts_per_page
-    var ppp = <?php echo json_encode($args['posts_per_page']); ?>;
-    var totalPages = <?php echo json_encode($query->max_num_pages) ?>;
-    // console.log(totalPages);
-</script>
 
 <?php get_footer(); ?>

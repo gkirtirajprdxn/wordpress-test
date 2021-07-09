@@ -2,6 +2,8 @@
 /* Template Name: Custom Search */
 get_header(); 
 
+get_template_part('template-parts/content', 'select');
+
 if($_GET['search_text'] && !empty($_GET['search_text'])) {
   $text = $_GET['search_text'];
 }

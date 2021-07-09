@@ -10,10 +10,9 @@
 function test_scripts() {
   wp_enqueue_style( 'test-style', get_template_directory_uri() . '/style.css', array(), '1.0.0', 'all' );
   wp_enqueue_script( 'jquery-3.5.1', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), '1.0.0', true );
-  wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/script.js', array('jquery-3.5.1'), '1.0.0', true );
 
   // Register the AJAX script
-  wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri(). '/js/loadMore.js', array('jquery'), false, true );
+  wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri(). '/js/script.js', array('jquery'), false, true );
  
   // Localize the script with new data
   $script_data_array = array(
@@ -21,7 +20,6 @@ function test_scripts() {
     'security' => wp_create_nonce( 'load_more_posts' ),
   );
   wp_localize_script( 'custom-script', 'blog', $script_data_array );
-  wp_localize_script( 'customjs', 'blog', $script_data_array );
 
   // Enqueued script with localized data.
   // wp_enqueue_script( 'custom-script' );
@@ -146,26 +144,31 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 //filter post by category Fn
 function filter_posts_by_ajax_callback() {
   $category = $_POST['category'];
-  // echo $category;
-
   $args = array(
     'post_type' => 'news',
     'posts_per_page' => 6,
     'orderby' => 'date'
   );
-
   if((isset($category)) && $category != 'all') {
     $args['category__in'] = array($category);
-  } 
-
+  }
   $the_query = new WP_Query( $args );
-  if ($the_query -> have_posts()) {
-    while($the_query -> have_posts()) {
+  if ($the_query -> have_posts()) { ?>
+    <div class="blog-posts">
+    <?php while($the_query -> have_posts()) {
       $the_query -> the_post(); 
       get_template_part('template-parts/content', 'archive');
     }
   } 
-  wp_reset_postdata();
+  wp_reset_postdata(); ?>
+      <input type="hidden" id="totalpages" value="<?= $the_query->max_num_pages ?>">
+    </div>
+    <?php if($the_query->max_num_pages > 1) { ?>
+    <button id="more_posts" class="loadmore">Load More</button>
+    <div class="no-posts-msg">
+        <h4>No Posts to Load!</h4>
+    </div>
+    <?php }
   wp_die();
 }
 add_action('wp_ajax_filter_posts_by_ajax', 'filter_posts_by_ajax_callback');
@@ -174,24 +177,24 @@ add_action('wp_ajax_nopriv_filter_posts_by_ajax', 'filter_posts_by_ajax_callback
 //Load More Fn
 function load_posts_by_ajax_callback() {
   check_ajax_referer('load_more_posts', 'security');
-
+  $category = $_POST['category'];
   $posts_per_page = (isset($_POST["posts_per_page"])) ? $_POST["posts_per_page"] : 1;
   $paged = (isset($_POST["page"])) ? $_POST['page'] : 2;
-
   $args = array(
       'post_type' => 'news',
       'post_status' => 'publish',
       'posts_per_page' => $posts_per_page,
       'paged' => $paged,
   );
+  if((isset($category)) && $category != 'all') {
+    $args['category__in'] = array($category);
+  } 
   $query = new WP_Query( $args );
-  if ( $query->have_posts() ) : ?>
-      <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-          <?php get_template_part('template-parts/content', 'archive'); ?>
-      <?php endwhile; ?>
-      <?php
+  if ( $query->have_posts() ) :
+    while ( $query->have_posts() ) : $query->the_post();
+      get_template_part('template-parts/content', 'archive');
+    endwhile;
   endif;
-
   wp_die();
 }
 add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');

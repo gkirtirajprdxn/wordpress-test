@@ -40,7 +40,7 @@
 
         <div class="search-field">
           <form action="search" method="get">
-            <input type="text" name="search_text">
+            <input type="text" name="search_text" value="<?php echo isset($_GET['search_text']) ? htmlspecialchars($_GET['search_text'], ENT_QUOTES) : ''; ?>">
             <button type="submit" name="">Submit</button>
           </form>
         </div>
